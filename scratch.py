@@ -5,6 +5,7 @@ def addends_find_target():
     rough_draft_list = random_addends(4)
     print(rough_draft_list)
     final_addends_list = edit_appends_list(rough_draft_list)
+    two_element_solution = two_number_target_sum(0,1)
 
 
 
@@ -38,5 +39,43 @@ def edit_appends_list(rough_draft_list_edit):
         else:
             is_duplicates = False
             return second_draft
+
+def adding_counter():
+    index1 = 0
+    index2 = 1
+    only_solution = []
+    only_two_addends = False
+    while only_two_addends is False:
+        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
+            only_solution.append(final_addends_list[index1], final_appends_list[index2])
+        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
+            index2 += 1
+        elif index > 3:
+            only_two_addends = True
+            break
+
+def two_number_target_sum():
+    index1 = 0
+    index2 = 1
+    only_solution = []
+    only_two_addends = False
+    while only_two_addends is False:
+        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
+            only_solution.append(final_addends_list[index1], final_appends_list[index2])
+        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
+            index2 += 1
+        elif index > 3:
+            only_two_addends = True
+            break
+    index1 += 1
+    index2 = 2
+    while only_two_addends is True:
+        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
+            only_solution.append(final_addends_list[index1], final_appends_list[index2])
+        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
+            index2 += 1
+        elif index > 3:
+            only_two_addends = True
+
 
 addends_find_target()
