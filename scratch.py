@@ -5,7 +5,7 @@ def addends_find_target():
     rough_draft_list = random_addends(4)
     print(rough_draft_list)
     final_addends_list = edit_appends_list(rough_draft_list)
-    two_element_solution = two_number_target_sum(0,1)
+    two_element_solution = adding_counter(target_sum, final_addends_list)
 
 
 
@@ -28,54 +28,45 @@ def edit_appends_list(rough_draft_list_edit):
     second_draft = rough_draft_list_edit
     while is_duplicates is True:
         if second_draft[0] == second_draft[1] or second_draft[0] == second_draft[2] or second_draft[0] == second_draft[3]:
-            second_draft.remove(0)
+            second_draft.pop(0)
             second_draft.append(random_addends(1))
         elif second_draft[1] == second_draft[2] or second_draft[1] == second_draft[3]:
-            second_draft.remove(1)
+            second_draft.pop(1)
             second_draft.append(random_addends(1))
         elif second_draft[2] == second_draft[3]:
-            second_draft.remove(2)
+            second_draft.pop(2)
             second_draft.append(random_addends(1))
         else:
             is_duplicates = False
             return second_draft
 
-def adding_counter():
+def adding_counter(target_sum2, final_addends_list2):
     index1 = 0
     index2 = 1
     only_solution = []
     only_two_addends = False
     while only_two_addends is False:
-        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
-            only_solution.append(final_addends_list[index1], final_appends_list[index2])
-        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
+        index_counter = False
+        if index2 <= 3 and (target_sum2 == final_addends_list2[index1] + final_addends_list2[index2]):
+            only_solution.append(final_addends_list2[index1])
+            only_solution.append(final_appends_list2[index2])
+        elif index2 <= 3 and (target_sum2 != final_addends_list2[index1] + final_addends_list2[index2]):
             index2 += 1
-        elif index > 3:
+        elif index1 == 2 and index2 > 3:
             only_two_addends = True
             break
-
-def two_number_target_sum():
-    index1 = 0
-    index2 = 1
-    only_solution = []
-    only_two_addends = False
-    while only_two_addends is False:
-        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
-            only_solution.append(final_addends_list[index1], final_appends_list[index2])
-        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
-            index2 += 1
-        elif index > 3:
-            only_two_addends = True
-            break
-    index1 += 1
-    index2 = 2
-    while only_two_addends is True:
-        if target_sum == final_addends_list[index1] + final_addends_list[index2]:
-            only_solution.append(final_addends_list[index1], final_appends_list[index2])
-        elif target_sum != final_addends_list[index1] + final_addends_list[index2] and index2 <= 3:
-            index2 += 1
-        elif index > 3:
-            only_two_addends = True
-
+        elif index2 > 3:
+            while index_counter is False:
+                if index1 == 0:
+                    index1 += 1
+                    index2 = 2
+                    index_counter = True
+                elif index1 == 1:
+                    index1 += 1
+                    index2 = 3
+                    index_counter = True
+    return only_solution
+        
 
 addends_find_target()
+print(adding_counter())
