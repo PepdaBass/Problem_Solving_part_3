@@ -6,6 +6,7 @@ def addends_find_target():
     print(rough_draft_list)
     final_addends_list = edit_appends_list(rough_draft_list)
     two_element_solution = adding_counter(target_sum, final_addends_list)
+    print(two_element_solution)
 
 
 
@@ -29,13 +30,19 @@ def edit_appends_list(rough_draft_list_edit):
     while is_duplicates is True:
         if second_draft[0] == second_draft[1] or second_draft[0] == second_draft[2] or second_draft[0] == second_draft[3]:
             second_draft.pop(0)
-            second_draft.append(random_addends(1))
+            new_element = random_addends(1)
+            newer_element = new_element.pop()
+            second_draft.append(newer_element)            
         elif second_draft[1] == second_draft[2] or second_draft[1] == second_draft[3]:
             second_draft.pop(1)
-            second_draft.append(random_addends(1))
+            new_element = random_addends(1)
+            newer_element = new_element.pop()
+            second_draft.append(newer_element)   
         elif second_draft[2] == second_draft[3]:
             second_draft.pop(2)
-            second_draft.append(random_addends(1))
+            new_element = random_addends(1)
+            newer_element = new_element.pop()
+            second_draft.append(newer_element)   
         else:
             is_duplicates = False
             return second_draft
@@ -49,7 +56,7 @@ def adding_counter(target_sum2, final_addends_list2):
         index_counter = False
         if index2 <= 3 and (target_sum2 == final_addends_list2[index1] + final_addends_list2[index2]):
             only_solution.append(final_addends_list2[index1])
-            only_solution.append(final_appends_list2[index2])
+            only_solution.append(final_addends_list2[index2])
         elif index2 <= 3 and (target_sum2 != final_addends_list2[index1] + final_addends_list2[index2]):
             index2 += 1
         elif index1 == 2 and index2 > 3:
@@ -69,4 +76,3 @@ def adding_counter(target_sum2, final_addends_list2):
         
 
 addends_find_target()
-print(adding_counter())
